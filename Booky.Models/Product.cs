@@ -26,20 +26,20 @@ namespace Booky.Models
         public double ListPrice { get; set; }
 
         [Required]
-        [Display(Name = "Price for 1000-200000")]
+        [Display(Name = "Price for 1-50")]
         [Range(1000, 1000000)]
         public double Price { get; set; }
 
 
         [Required]
-        [Display(Name = "Price for 200000+")]
+        [Display(Name = "Price for 50+")]
         [Range(1000, 1000000)]
-        public double Price200 { get; set; }
+        public double Price50 { get; set; }
 
         [Required]
-        [Display(Name = "Price for 500000+")]
+        [Display(Name = "Price for 100+")]
         [Range(1000, 1000000)]
-        public double Price500 { get; set; }
+        public double Price100 { get; set; }
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
