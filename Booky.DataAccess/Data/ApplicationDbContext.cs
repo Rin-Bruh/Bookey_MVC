@@ -69,12 +69,12 @@ namespace Booky.DataAccess.Data
                     Author = "Billy Spark",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     ISBN = "SWD9999001",
-                    ListPrice = 490000,
+                    ListPrice = 450000,
                     Price = 400000,
-                    Price200 = 350000,
-                    Price500 = 300000,
+                    Price50 = 390000,
+                    Price100 = 370000,
                     CategoryId = 1,
-                    ImageUrl=""
+                    ImageUrl= "\\images\\product\\d80fb986-403b-4c98-8f62-18ae9f46163b.jpg"
                 },
                 new Product
                 {
@@ -83,12 +83,12 @@ namespace Booky.DataAccess.Data
                     Author = "Nancy Hoover",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     ISBN = "CAW777777701",
-                    ListPrice = 85000,
+                    ListPrice = 75000,
                     Price = 70000,
-                    Price200 = 65000,
-                    Price500 = 60000,
+                    Price50 = 65000,
+                    Price100 = 60000,
                     CategoryId = 1,
-                    ImageUrl = ""
+                    ImageUrl = "\\images\\product\\9ef720f1-189a-45bf-9fc3-4e4075fbe1ae.jpg"
                 },
                 new Product
                 {
@@ -99,10 +99,10 @@ namespace Booky.DataAccess.Data
                     ISBN = "RITO5555501",
                     ListPrice = 250000,
                     Price = 200000,
-                    Price200 = 100000,
-                    Price500 = 50000,
+                    Price50 = 190000,
+                    Price100 = 180000,
                     CategoryId = 1,
-                    ImageUrl = ""
+                    ImageUrl = "\\images\\product\\55164fe4-9d9e-4a74-9160-f684e93a23ab.jpg"
                 },
                 new Product
                 {
@@ -113,10 +113,10 @@ namespace Booky.DataAccess.Data
                     ISBN = "WS3333333301",
                     ListPrice = 350000,
                     Price = 300000,
-                    Price200 = 250000,
-                    Price500 = 230000,
+                    Price50 = 290000,
+                    Price100 = 280000,
                     CategoryId = 2,
-                    ImageUrl = ""
+                    ImageUrl = "\\images\\product\\5aa4f1a5-b51e-4595-a9e9-81dd42971017.jpg"
                 },
                 new Product
                 {
@@ -127,10 +127,10 @@ namespace Booky.DataAccess.Data
                     ISBN = "SOTJ1111111101",
                     ListPrice = 150000,
                     Price = 140000,
-                    Price200 = 120000,
-                    Price500 = 100000,
+                    Price50 = 130000,
+                    Price100 = 120000,
                     CategoryId = 2,
-                    ImageUrl = ""
+                    ImageUrl = "\\images\\product\\8025ea01-b070-4b9b-a113-991ef1b303f5.jpg"
                 },
                 new Product
                 {
@@ -141,10 +141,10 @@ namespace Booky.DataAccess.Data
                     ISBN = "FOT000000001",
                     ListPrice = 120000,
                     Price = 115000,
-                    Price200 = 110000,
-                    Price500 = 100000,
+                    Price50 = 110000,
+                    Price100 = 100000,
                     CategoryId = 3,
-                    ImageUrl = ""
+                    ImageUrl = "\\images\\product\\f4eb610b-1817-42ce-8569-e05d2160f28d.jpg"
                 }
                 );
 
