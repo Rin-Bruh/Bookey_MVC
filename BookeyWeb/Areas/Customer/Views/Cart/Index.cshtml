@@ -84,7 +84,7 @@
                                     var vietnamNumberFormat1 = vietnamCulture1.NumberFormat;
                                     vietnamNumberFormat1.CurrencySymbol = "₫";
                                 }
-                                <h4 class="text-dark fw-bolder">@Model.OrderTotal.ToString("c", vietnamNumberFormat1)</h4>
+                                <h4 class="text-dark fw-bolder">@Model.OrderHeader.OrderTotal.ToString("c", vietnamNumberFormat1)</h4>
                             </li>
                         </ul>
                     </div>
