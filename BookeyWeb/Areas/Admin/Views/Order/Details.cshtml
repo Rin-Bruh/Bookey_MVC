@@ -1,4 +1,6 @@
 ﻿@model OrderVM
+@using System.Globalization
+
 <form method="post">
     <input asp-for="OrderHeader.Id" hidden />
     <br />
@@ -216,11 +218,16 @@
                                             <div class="col-8">
 
                                                 <h6 class="my-0 text-primary">@detail.Product.Title</h6>
-                                                <small class="text-muted">Price : @detail.Price.ToString("c")</small><br />
+                                                @{
+                                                    var vietnamCulture = new CultureInfo("vi-VN");
+                                                    var vietnamNumberFormat = vietnamCulture.NumberFormat;
+                                                    vietnamNumberFormat.CurrencySymbol = "₫";
+                                                }
+                                                <small class="text-muted">Price : @detail.Price.ToString("c", vietnamNumberFormat)</small><br />
                                                 <small class="text-muted">Quantity : @detail.Count</small>
                                             </div>
                                             <div class="col-4 text-end">
-                                                <p class="text-success">@((detail.Count * detail.Price).ToString("c"))</p>
+                                                <p class="text-success">@((detail.Count * detail.Price).ToString("c", vietnamNumberFormat))</p>
                                             </div>
                                         </div>
                                     </li>
@@ -231,7 +238,12 @@
                                             <h5 class="text-white">TOTAL </h5>
                                         </div>
                                         <div class="col-6 text-end">
-                                            <h5 class="text-white">@Model.OrderHeader.OrderTotal.ToString("c")</h5>
+                                            @{
+                                                var vietnamCulture1 = new CultureInfo("vi-VN");
+                                                var vietnamNumberFormat1 = vietnamCulture1.NumberFormat;
+                                                vietnamNumberFormat1.CurrencySymbol = "₫";
+                                            }
+                                            <h5 class="text-white">@Model.OrderHeader.OrderTotal.ToString("c", vietnamNumberFormat1)</h5>
                                         </div>
                                     </div>
                                 </li>

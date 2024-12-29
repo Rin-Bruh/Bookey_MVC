@@ -141,7 +141,7 @@ namespace BookeyWeb.Areas.Customer.Controllers
 				//		PriceData = new SessionLineItemPriceDataOptions
 				//		{
 				//			UnitAmount = (long)(item.Price * 1000), // 200.000 => 200000
-				//			Currency = "usd",
+				//			Currency = "vnd",
 				//			ProductData = new SessionLineItemPriceDataProductDataOptions
 				//			{
 				//				Name = item.Product.Title
