@@ -1,9 +1,11 @@
 ﻿using Booky.DataAccess.Data;
+using Booky.DataAccess.Repository;
 using Booky.DataAccess.Repository.IRepository;
 using Booky.Models;
 using Booky.Models.ViewModels;
 using Booky.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -31,17 +33,51 @@ namespace BookeyWeb.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             List<ApplicationUser> objUserList = _db.ApplicationUsers.Include(u=>u.Company).ToList();
-            return Json(new { data = objUserList });
+
+            var userRoles = _db.UserRoles.ToList();
+            var roles = _db.Roles.ToList();
+
+			foreach (var user in objUserList)
+			{
+                var roleId = userRoles.FirstOrDefault(u => u.UserId == user.Id).RoleId;
+				user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
+
+				if (user.Company == null)
+				{
+					user.Company = new Company()
+					{
+						Name = ""
+					};
+				}
+			}
+
+			return Json(new { data = objUserList });
         }
 
-        [HttpDelete]
-        public IActionResult Delete(int? id)
-        {
+		[HttpPost]
+		public IActionResult LockUnlock([FromBody] string id)
+		{
 
+			var objFromDb = _db.ApplicationUsers.FirstOrDefault(u => u.Id == id);
+			if (objFromDb == null)
+			{
+				return Json(new { success = false, message = "Error while Locking/Unlocking" });
+			}
 
-            return Json(new { success = true, message = "Delete Successful" });
-        }
+			if (objFromDb.LockoutEnd != null && objFromDb.LockoutEnd > DateTime.Now)
+			{
+				//user is currently locked and we need to unlock them
+				objFromDb.LockoutEnd = DateTime.Now;
+			}
+			else
+			{
+				objFromDb.LockoutEnd = DateTime.Now.AddYears(1000);
+			}
+			_unitOfWork.ApplicationUser.Update(objFromDb);
+			_unitOfWork.Save();
+			return Json(new { success = true, message = "Operation Successful" });
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
