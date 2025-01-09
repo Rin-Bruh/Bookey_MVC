@@ -17,9 +17,11 @@ namespace BookeyWeb.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public UserController(ApplicationDbContext db)
+		private readonly UserManager<IdentityUser> _userManager;
+		public UserController(ApplicationDbContext db, UserManager<IdentityUser> userManager)
         {
             _db = db;
+			_userManager = userManager;
         }
         public IActionResult Index()
         {         
@@ -50,8 +52,44 @@ namespace BookeyWeb.Areas.Admin.Controllers
 			return View(RoleVM);
 		}
 
-		#region API CALLS
+		[HttpPost]
+		public IActionResult RoleManagment(RoleManagementVM roleManagementVM)
+		{
+			string RoleID = _db.UserRoles.FirstOrDefault(u => u.UserId == roleManagementVM.ApplicationUser.Id).RoleId;
+			string oldRole = _db.Roles.FirstOrDefault(u => u.Id == RoleID).Name;
 
+			if (!(roleManagementVM.ApplicationUser.Role == oldRole))
+			{
+				//a role was updated
+				ApplicationUser applicationUser = _db.ApplicationUsers.FirstOrDefault(u => u.Id == roleManagementVM.ApplicationUser.Id);
+				if (roleManagementVM.ApplicationUser.Role == SD.Role_Company)
+				{
+					applicationUser.CompanyId = roleManagementVM.ApplicationUser.CompanyId;
+				}
+				if (oldRole == SD.Role_Company)
+				{
+					applicationUser.CompanyId = null;
+				}
+				_db.SaveChanges();
+
+				_userManager.RemoveFromRoleAsync(applicationUser, oldRole).GetAwaiter().GetResult();
+				_userManager.AddToRoleAsync(applicationUser, roleManagementVM.ApplicationUser.Role).GetAwaiter().GetResult();
+
+			}
+			//else
+			//{
+			//	if (oldRole == SD.Role_Company && applicationUser.CompanyId != roleManagementVM.ApplicationUser.CompanyId)
+			//	{
+			//		applicationUser.CompanyId = roleManagementVM.ApplicationUser.CompanyId;
+			//		_db.ApplicationUser.Update(applicationUser);
+			//		_unitOfWork.Save();
+			//	}
+			//}
+
+			return RedirectToAction("Index");
+		}
+
+		#region API CALLS
 		[HttpGet]
         public IActionResult GetAll()
         {
