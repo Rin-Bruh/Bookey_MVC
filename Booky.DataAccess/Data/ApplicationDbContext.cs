@@ -75,8 +75,7 @@ namespace Booky.DataAccess.Data
                     Price = 400000,
                     Price50 = 390000,
                     Price100 = 370000,
-                    CategoryId = 1,
-                    ImageUrl= "\\images\\product\\d80fb986-403b-4c98-8f62-18ae9f46163b.jpg"
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -89,8 +88,7 @@ namespace Booky.DataAccess.Data
                     Price = 70000,
                     Price50 = 65000,
                     Price100 = 60000,
-                    CategoryId = 1,
-                    ImageUrl = "\\images\\product\\9ef720f1-189a-45bf-9fc3-4e4075fbe1ae.jpg"
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -103,8 +101,7 @@ namespace Booky.DataAccess.Data
                     Price = 200000,
                     Price50 = 190000,
                     Price100 = 180000,
-                    CategoryId = 1,
-                    ImageUrl = "\\images\\product\\55164fe4-9d9e-4a74-9160-f684e93a23ab.jpg"
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -117,8 +114,7 @@ namespace Booky.DataAccess.Data
                     Price = 300000,
                     Price50 = 290000,
                     Price100 = 280000,
-                    CategoryId = 2,
-                    ImageUrl = "\\images\\product\\5aa4f1a5-b51e-4595-a9e9-81dd42971017.jpg"
+                    CategoryId = 2
                 },
                 new Product
                 {
@@ -131,8 +127,7 @@ namespace Booky.DataAccess.Data
                     Price = 140000,
                     Price50 = 130000,
                     Price100 = 120000,
-                    CategoryId = 2,
-                    ImageUrl = "\\images\\product\\8025ea01-b070-4b9b-a113-991ef1b303f5.jpg"
+                    CategoryId = 2
                 },
                 new Product
                 {
@@ -145,8 +140,7 @@ namespace Booky.DataAccess.Data
                     Price = 115000,
                     Price50 = 110000,
                     Price100 = 100000,
-                    CategoryId = 3,
-                    ImageUrl = "\\images\\product\\f4eb610b-1817-42ce-8569-e05d2160f28d.jpg"
+                    CategoryId = 3
                 }
                 );
 
