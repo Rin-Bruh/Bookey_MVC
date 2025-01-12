@@ -45,7 +45,7 @@ namespace BookeyWeb.Areas.Admin.Controllers
             else
             {
                 //update
-                productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+                productVM.Product = _unitOfWork.Product.Get(u=>u.Id==id,includeProperties:"ProductImages");
                 return View(productVM);
             }//, includeProperties: "ProductImages"
 
@@ -100,7 +100,7 @@ namespace BookeyWeb.Areas.Admin.Controllers
 
                 
                 TempData["success"] = "Product created/updated successfully";
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index");
             }
             else
             {
